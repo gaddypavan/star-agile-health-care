@@ -1,0 +1,19 @@
+- name : Configure Docker on EC2 Instances
+  hosts : all
+  become: true
+  #connection : ssh
+  tasks : 
+  - name: updating app
+    command : sudo apt update
+  - name: Install Python Pip
+    command: sudo apt install -y python-pip
+  - name : Install Docker
+    command : sudo apt-get install -y docker.io
+    become : yes
+    become_user : root   
+  - name : Start Docker Service
+    command : sudo systemctl start docker
+    become : yes
+    become_user : root
+  - name : Deploy the image and run as a container
+    command : docker run -itd -p 8081:8081 gpavankumarreddy/dilipreddy:medicure1
