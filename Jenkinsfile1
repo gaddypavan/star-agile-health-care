@@ -21,7 +21,7 @@ pipeline {
   }
    stage ('docker image creation') {
     steps {
-      sh 'docker build -t gpavankumarreddy/dilipreddy:medicure .'
+      sh 'docker build -t gpavankumarreddy/dilipreddy:medicure1 .'
       }
   }
   stage('docker push') {
