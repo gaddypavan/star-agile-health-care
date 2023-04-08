@@ -1,0 +1,18 @@
+pipeline {
+  agent any
+
+   stages {
+
+   stage ('checkout') {
+     steps {
+      git credentialsId: 'd13e4dd5-2400-4112-9c3a-fb99152e2a49', url: 'https://github.com/gaddypavan/star-agile-health-care.git'
+     }
+   }
+   stage ('maven build') {
+     steps {
+       echo 'maven build'
+       sh 'mvn package'
+     }
+   }
+  }
+  }
