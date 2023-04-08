@@ -14,5 +14,21 @@ pipeline {
        sh 'mvn package'
      }
    }
+  stage ('html report') {
+      steps {
+      publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '/var/lib/jenkins/workspace/Banking Finance/target/surefire-reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+    }
   }
+   stage ('docker image creation') {
+    steps {
+      sh 'docker build -t gpavankumarreddy/dilipreddy:medicure .'
+      }
+  }
+  stage('docker push') {
+      steps {
+        withCredentials([usernamePassword(credentialsId: 'DOCKERHUB', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+        sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+        }
+      sh 'docker push gpavankumarreddy/dilipreddy:medicure1'
+    }
   }
