@@ -14,6 +14,4 @@
   - name : Start Docker Service
     command : sudo systemctl start docker
     become : yes
-    become_user : root
-  - name : Deploy the image and run as a container
-    command : docker run -itd -p 8084:8082 gpavankumarreddy/dilipreddy:medicure1
+    become_user : root  
