@@ -37,5 +37,18 @@ pipeline {
        ansiblePlaybook credentialsId: 'prod-server', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: 'deploy-playbook.yml'
   }
   }
+  stage("deploy to kubernetes'){
+     steps[
+       sshagent(["prod-server"]) { sh "scp - StrictHostKeyChecking-no nodejsapp.yani ubuntu@3.234.205.217:/home/ubuntu
+   script(
+   try(
+   sh "ssh ubuntug3.234.205.217 sudo kubecti apply -f .
+  }catch(error){
+  sh ssh ubuntu 3.234.205.217 sudo kubectl create ·f ...
   }
   }
+}
+}
+}
+}
+}
