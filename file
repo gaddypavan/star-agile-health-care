@@ -1,1 +1,21 @@
-
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+name: medicure
+labels:
+app: medicure
+spec:
+replicas: 3
+selector:
+matchLabels: app: medicure
+template:
+metadata:
+Labels:
+app: medicure
+spec:
+containers:
+name: medicure
+image: gpavankumarreddy/dilipreddy:medicure
+ports:
+ - containerPort: 80
+---
