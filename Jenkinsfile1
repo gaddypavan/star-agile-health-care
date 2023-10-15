@@ -42,7 +42,7 @@ pipeline {
        sshagent(["prod-server"]) { sh "scp - StrictHostKeyChecking-no nodejsapp.yani ubuntu@3.234.205.217:/home/ubuntu
    script(
    try(
-   sh "ssh ubuntug3.234.205.217 sudo kubecti apply -f .
+   sh "ssh ubuntug3.234.205.217 sudo kubectl apply -f .
   }catch(error){
   sh ssh ubuntu 3.234.205.217 sudo kubectl create ·f ...
   }
