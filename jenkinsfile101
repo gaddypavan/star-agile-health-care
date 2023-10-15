@@ -1,0 +1,20 @@
+pipeline{
+  agent any
+    stages {
+      stage ('checkout') {
+        steps {
+          git 'https://github.com/gaddypavan/star-agile-health-care.git'
+        }
+      }
+      stage ('build') {
+         steps {
+            sh 'mvn package'
+         }
+      }
+      stage ('sonar') {
+         steps {
+           sh 'mvn sonar:sonar'
+          }
+      }
+    }
+}
