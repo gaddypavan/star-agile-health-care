@@ -44,7 +44,7 @@ pipeline {
    try(
    sh "ssh ubuntug3.234.205.217 sudo kubectl apply -f .
   }catch(error){
-  sh ssh ubuntu 3.234.205.217 sudo kubectl create ·f ...
+  sh ssh ubuntu 3.234.205.217 sudo kubectl create -f .
   }
   }
 }
